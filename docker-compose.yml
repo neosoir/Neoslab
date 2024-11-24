@@ -1,0 +1,24 @@
+services:
+  client:
+    build:
+      context: ./site
+      dockerfile: DockerFile
+    image: img_neoslab:1.0
+    restart: always
+    container_name: ctr_neoslab
+    ports:
+      - "${INTERNAL_PORT}:${EXTERNAL_PORT}"
+    environment:
+      - TZ=America/Mexico_City
+    networks:
+      - net_neoslab
+    volumes:
+      # Mapea el directorio local al directorio de contenido de NGINX
+      - ./site:/usr/share/nginx/html:rw
+      # Opcional: configuración para permisos de usuario en Linux
+      - ./site:/usr/share/nginx/html:rw,uid=1000,gid=1000 
+
+networks:
+  net_neoslab:
+    name: net_neoslab
+    driver: bridge

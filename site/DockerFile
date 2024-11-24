@@ -1,0 +1,8 @@
+# Usa la imagen base oficial de NGINX
+FROM nginx:1.27
+
+# Expone el puerto 80 para acceder al servidor
+EXPOSE 80
+
+# Comando predeterminado para ejecutar NGINX
+CMD ["nginx", "-g", "daemon off;"]
