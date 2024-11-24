@@ -13,9 +13,7 @@ services:
     networks:
       - net_neoslab
     volumes:
-      # Mapea el directorio local al directorio de contenido de NGINX
       - ./site:/usr/share/nginx/html:rw
-      # Opcional: configuración para permisos de usuario en Linux
       - ./site:/usr/share/nginx/html:rw,uid=1000,gid=1000 
 
 networks:
