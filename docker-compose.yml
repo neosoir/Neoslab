@@ -18,6 +18,7 @@ services:
       # Opcional: configuración para permisos de usuario en Linux
       - ./site:/usr/share/nginx/html:rw,uid=1000,gid=1000 
 
+
 networks:
   net_neoslab:
     name: net_neoslab
