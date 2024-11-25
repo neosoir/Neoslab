@@ -15,7 +15,7 @@ RUN mkdir -p /etc/nginx/sites-enabled && \
     fi
 
 # Expone el puerto 80 para acceder al servidor
-EXPOSE 80
+EXPOSE 80 443
 
 # Comando predeterminado para ejecutar NGINX
 CMD ["nginx", "-g", "daemon off;"]
