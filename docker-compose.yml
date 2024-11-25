@@ -3,6 +3,8 @@ services:
     build:
       context: ./site
       dockerfile: DockerFile
+      args:
+        - APP_ENV=${APP_ENV}
     image: img_neoslab:1.0
     restart: always
     container_name: ctr_neoslab
@@ -10,12 +12,12 @@ services:
       - "${INTERNAL_PORT}:${EXTERNAL_PORT}"
     environment:
       - TZ=America/Mexico_City
+      - APP_ENV=${APP_ENV}
     networks:
       - net_neoslab
     volumes:
       - ./site:/usr/share/nginx/html:rw
       - ./site:/usr/share/nginx/html:rw,uid=1000,gid=1000 
-
 
 networks:
   net_neoslab:
