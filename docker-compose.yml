@@ -5,6 +5,8 @@ services:
       dockerfile: DockerFile
       args:
         - APP_ENV=${APP_ENV}
+        - PRIMARY_DOMAIN=${PRIMARY_DOMAIN}
+        - SECONDARY_DOMAIN=${SECONDARY_DOMAIN}
     image: img_neoslab:1.0
     restart: always
     container_name: ctr_neoslab
@@ -13,11 +15,15 @@ services:
     environment:
       - TZ=America/Mexico_City
       - APP_ENV=${APP_ENV}
+      - PRIMARY_DOMAIN=${PRIMARY_DOMAIN}
+      - SECONDARY_DOMAIN=${SECONDARY_DOMAIN}
     networks:
       - net_neoslab
     volumes:
       - ./site:/usr/share/nginx/html:rw
-      - ./site:/usr/share/nginx/html:rw,uid=1000,gid=1000 
+      - ./site:/usr/share/nginx/html:rw,uid=1000,gid=1000
+      - /etc/letsencrypt:/etc/letsencrypt:ro # Montar certificados como solo lectura
+      - /var/log/nginx:/var/log/nginx # (opcional) Logs para depuración
 
 networks:
   net_neoslab:
