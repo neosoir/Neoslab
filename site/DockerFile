@@ -14,6 +14,8 @@ RUN mkdir -p /etc/nginx/sites-enabled && \
       cp /usr/share/nginx/html/server.conf /etc/nginx/sites-enabled/default.conf; \
     fi
 
+RUN apt-get update && apt-get install -y nano
+
 # Expone el puerto 80 para acceder al servidor
 EXPOSE 80 443
 
