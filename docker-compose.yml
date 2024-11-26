@@ -1,4 +1,5 @@
 services:
+  
   client:
     build:
       context: ./site
@@ -11,8 +12,8 @@ services:
     restart: always
     container_name: ctr_neoslab
     ports:
-      - "80:80"    # HTTP
-      - "443:443"  # HTTPS
+      - "${INTERNAL_PORT}:${EXTERNAL_PORT}"
+      - "${INTERNAL_PORT_SSL}:${EXTERNAL_PORT_SSL}"
     environment:
       - TZ=America/Mexico_City
       - APP_ENV=${APP_ENV}

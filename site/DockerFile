@@ -1,6 +1,9 @@
 # Usa la imagen base oficial de NGINX
 FROM nginx:1.27
 
+# Actualiza el sistema e instala nano
+RUN apt-get update && apt-get install -y nano && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Establecer el directorio de trabajo
 WORKDIR /usr/share/nginx/html
 
@@ -12,8 +15,6 @@ ARG APP_ENV
 RUN if [ "$APP_ENV" = "production" ]; then \
         cp /usr/share/nginx/html/server.conf /etc/nginx/conf.d/default.conf; \
     fi
-
-RUN apt-get update && apt-get install -y nano 
 
 # Expone el puerto 80 para acceder al servidor
 EXPOSE 80 443
