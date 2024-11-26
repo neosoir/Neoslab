@@ -26,7 +26,6 @@ services:
       - ./site:/usr/share/nginx/html:rw,uid=1000,gid=1000
       - /etc/letsencrypt:/etc/letsencrypt:ro # Montar certificados como solo lectura
       - /var/log/nginx:/var/log/nginx # (opcional) Logs para depuración
-    # command: /bin/sh -c "envsubst '\$PRIMARY_DOMAIN \$SECONDARY_DOMAIN' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.tmp && mv /etc/nginx/conf.d/default.tmp /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
 
 networks:
   net_neoslab:
