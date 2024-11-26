@@ -5,7 +5,7 @@ FROM nginx:1.27
 WORKDIR /usr/share/nginx/html
 
 # Copiar los archivos de la aplicación al contenedor
-# COPY ./server.conf /usr/share/nginx/html
+COPY ./server.conf /usr/share/nginx/html
 
 # Copiar condicionalmente server.conf si está en producción
 ARG APP_ENV
