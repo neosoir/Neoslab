@@ -2,7 +2,7 @@ services:
 
   client:
     build:
-      context: ./site
+      context: .
       dockerfile: DockerFile
       args:
         - APP_ENV=${APP_ENV}
