@@ -1,4 +1,5 @@
 <?php
+$base_url = 'http://localhost';
 include 'header.php';
 ?>
 
