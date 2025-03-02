@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y nano && apt-get clean && rm -rf /var/li
 WORKDIR /usr/share/nginx/html
 
 # Copiar los archivos de la aplicación al contenedor
-COPY ./server.conf /usr/share/nginx/html/server.conf
+COPY ./Docker/server.conf /usr/share/nginx/html/server.conf
 
 # Declarar argumentos de construcción
 ARG PRIMARY_DOMAIN
