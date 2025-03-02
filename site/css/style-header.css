@@ -1,0 +1,67 @@
+/*-----Header-----*/
+
+.header-icons-container
+{  
+   width: 100%;
+   min-width: 32rem;
+   display: flex;
+   justify-content: flex-end; 
+   background: radial-gradient(circle at 50% 15%, #2faddc, #08425f,#062b3e);
+   border-bottom: 0.1rem solid white;
+   border-bottom-left-radius: 0.5rem;
+   border-bottom-right-radius: 0.5rem;
+}
+
+.icons 
+{
+   margin: 1.5rem;
+}
+
+.icons i
+{
+   color: white;
+   font-size: 2.5rem;
+   margin: 0 1.3rem;
+}
+
+.fa-platzi
+{
+   margin: 0;
+   padding: 0;
+}
+
+.fa-platzi img
+{
+   color: white;
+   width: 2rem;
+   margin: 0 1.3rem;
+}
+
+
+.profile-link:hover
+{
+   border-bottom: 0.1rem solid white;
+   color: white;
+}
+
+    /*Imagen*/
+
+.nav-logo-container
+{
+   width: 100vw;
+   min-width: 32rem;
+}
+
+.nav-logo-container img
+{
+   width: 18rem;
+   margin: 0.1rem 6rem;
+}
+
+@media (max-width: 600px)
+{
+    .header-icons-container
+    {  
+       justify-content: center; 
+    }
+}

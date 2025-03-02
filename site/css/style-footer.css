@@ -1,0 +1,31 @@
+/*-----Footer-----*/
+
+footer
+{
+    width: 100%;
+    min-width: 32rem;
+    height: 100%;
+
+}
+
+.copy
+{
+    background: radial-gradient(circle at 50% 15%, #2faddc, #08425f,#062b3e);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+}
+
+.copy a
+{
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.copy a:hover
+{
+    border-bottom: 0.1rem solid white;
+    color: white;
+}

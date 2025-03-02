@@ -1,0 +1,80 @@
+/*-----Home-----*/
+
+.home-main
+{
+    background: radial-gradient(circle at 50% 50%, #57f2ff, #2faddc, #08425f,#062b3e);
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    min-width: 32rem;
+}
+
+.home-main-core
+{
+    width: auto;
+    height: auto;
+}
+
+.home-main-title
+{
+    color: white;
+    padding: 1rem 0rem;
+}
+
+.home-main-button
+{
+    background: white;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 2.5rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.home-main-button:hover
+{
+    color: white;
+    background: black;
+    width: 150px;
+}  
+
+
+/*Media Queries*/
+
+@media (max-width:800px)
+{
+    /*Home*/
+
+    body
+    {
+        position: relative;
+    }
+
+    .nav-logo-container img
+    {
+        margin: 0.1rem 9rem;
+    }
+
+    .home-main-core
+    {
+        width: 100%;
+        height: 100%;
+    }    
+}
+
+@media (max-width: 600px)
+{
+    /*Home*/
+
+    .nav-logo-container img
+    {
+        display: block;
+        margin: auto;
+    }
+
+    .home-main
+    {
+        background: radial-gradient(circle at 50% 30%, #57f2ff, #2faddc, #08425f,#062b3e);
+    }
+}

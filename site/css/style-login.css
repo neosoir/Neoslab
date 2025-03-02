@@ -1,0 +1,135 @@
+/*Degradado del body*/
+body 
+{
+/* 	background: radial-gradient(circle at 50% 15%,#90b3bb,#5b7d86,#453f5d, #2d323e, #2a4150 ); */
+background: radial-gradient(circle at 50% 15%, #2faddc, #08425f,#062b3e);
+    font-size: 16px;
+    margin: 0;
+}
+
+#login {
+    width: 320px;
+    padding: 5% 0 0;
+    margin: auto;
+}
+
+/*Cambio de Logo*/
+body.login div#login h1 a {
+    width: 125px;
+    height: 125px;
+    background-size: 125px 125px;
+    background-image: url("../assets/img/core.png");
+    border-radius: 50%;
+}
+/*Barra de status del login*/
+body.login #login_error, .login .message, .login .success 
+{
+    border-left: 8px solid #72aee6;
+    padding: 12px;
+    margin-left: 0;
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 25px;
+    border: 2px solid white;
+    color: white;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    text-align:center;
+}
+/*Formato de login*/
+body.login form {
+    margin-top: 20px;
+    margin-left: 0;
+    padding: 26px 24px 34px;
+    font-weight: 400;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.1);
+    border: 2px solid white;
+    color: white;
+    border-radius: 10%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+/*Input*/
+body.login form .input, .login input[type="text"] 
+{
+    background-color: transparent;
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+    border-bottom: 2px solid white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    height: 50px;
+    color: white;
+    box-shadow: 0 0 0 0px;
+}
+
+/*Boton Ojo*/
+
+body.login .button.wp-hide-pw .dashicons 
+{
+    color: white;
+}
+
+body.wp-core-ui .button-secondary:hover, .wp-core-ui .button.hover, .wp-core-ui .button:hover 
+{
+    color: white;
+}
+
+.login .button.wp-hide-pw:focus 
+{
+    border: none;
+    box-shadow: 0 0 0 0px;
+    outline: none;
+    background-color: rgba(255,255,255,0.1);
+}
+/*Boton flecha*/
+body.login form input[type="checkbox"]
+{
+    background-color: rgba(255,255,255,0.1);
+    border: 2px white solid;
+    box-shadow: 0 0 0 0px;
+    outline: none;
+}
+body.input[type="checkbox"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime-local"]:focus, input[type="datetime"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="radio"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, select:focus, textarea:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 0px;
+    outline: 2px solid transparent;
+}
+
+/*Boton log in*/
+
+body.wp-core-ui .button-primary {
+    border: none;
+    color: white;
+    text-decoration: none;
+    text-shadow: none;
+    background-color: rgba(255,255,255,0.1);
+}
+
+body.wp-core-ui .button-primary:hover {
+    background-color: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    outline: none;
+}
+
+/*Ultimos dos enlaces*/
+
+body.login div#login p#nav a,
+body.login div#login p#backtoblog a
+{
+	color:white;
+}
+
+body.login div#login p#nav a:hover,
+body.login div#login p#backtoblog a:hover
+{
+	color:white;
+}
+
+a:focus {
+    color: none;
+    box-shadow: 0 0 0 0px;
+}
+

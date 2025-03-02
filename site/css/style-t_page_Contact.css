@@ -1,0 +1,22 @@
+/*-----Contact-----*/
+
+.contact-main-container
+{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 32rem;
+    text-align: center;
+    padding: 1.5rem 0rem;
+}
+
+.contact-main-container__left, .contact-main-container__right
+{
+    padding: 1rem 4rem;
+}
+
+.contact-main-container img
+{
+    width: 100px;
+}
