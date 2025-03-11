@@ -1,0 +1,53 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ctr_chat_api_ollama_dev
+    restart: unless-stopped
+    environment:
+      - OLLAMA_ORIGINS=${APP_URL}
+      - OLLAMA_CONTEXT_LENGTH=8192  
+    ports:
+      - "11434:11434"
+    volumes:
+      - vol_chat_ollama_dev:/root/.ollama
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: "10GB"
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: ctr_chat_client_dev
+    image: img_chat_client_dev:1.0
+    depends_on:
+      - ollama
+    ports:
+      - "5173:5173" 
+    volumes:
+      - ./client:/client:rw,uid=1000,gid=1000 
+    environment:
+      - VITE_OLLAMA_API_URL=${VITE_OLLAMA_API_URL}
+      - VITE_OLLAMA_CONTEXT=${VITE_OLLAMA_CONTEXT}
+    command: >
+      /bin/bash -c "
+
+      echo 'Verificando si el directorio node_modules existe...' &&
+      if [ ! -d node_modules ]; then
+        echo 'El directorio node_modules no existe. Instalando dependencias de npm...' &&
+        npm install;
+      else
+        echo 'El directorio node_modules ya existe. Saltando instalación de npm.';
+      fi &&
+
+      echo 'Iniciando Vite en modo de desarrollo...' &&
+      npm run dev
+      "
+      
+volumes:
+  vol_chat_ollama_dev:
+    name: vol_chat_ollama_dev
+    driver: local
+
