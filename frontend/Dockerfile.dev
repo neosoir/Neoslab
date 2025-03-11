@@ -2,4 +2,4 @@ FROM node:20
 
 USER node
 
-WORKDIR /client
+WORKDIR /frontend
