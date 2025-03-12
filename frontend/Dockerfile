@@ -2,11 +2,22 @@ FROM node:20
 
 WORKDIR /cliente
 
+# Pasar variables de entorno como ARG para Vite
+ARG VITE_OLLAMA_API_URL
+ARG VITE_OLLAMA_CONTEXT
+ARG VITE_ALLOWED_HOSTS
+
+# Copiar archivos
 COPY . .
 
+# Instalar dependencias
 RUN npm install
 
-RUN npm run build
+# Pasar variables al build de Vite
+RUN VITE_OLLAMA_API_URL=$VITE_OLLAMA_API_URL \
+    VITE_OLLAMA_CONTEXT=$VITE_OLLAMA_CONTEXT \
+    VITE_ALLOWED_HOSTS=$VITE_ALLOWED_HOSTS \
+    npm run build
 
 # Instalar 'serve' para servir los archivos en producción
 RUN npm install -g serve
@@ -15,5 +26,4 @@ RUN npm install -g serve
 EXPOSE 3000
 
 # Comando para servir el frontend
-CMD ["serve", "-s", "dist", "-l", "0.0.0.0:3000"]
-
+CMD ["serve", "-s", "dist", "--listen", "3000"]
