@@ -9,6 +9,8 @@ services:
       - "${INTERNAL_PORT_SSL}:${EXTERNAL_PORT_SSL}"
     volumes:
       - ./Docker/server.conf:/etc/nginx/templates/server.conf.template
+      - /etc/letsencrypt:/etc/letsencrypt:ro # Montar certificados como solo lectura
+      - /var/log/nginx:/var/log/nginx # (opcional) Logs para depuración
     environment:
       - PRIMARY_DOMAIN=${PRIMARY_DOMAIN}
       - SECONDARY_DOMAIN=${SECONDARY_DOMAIN}
