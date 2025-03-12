@@ -7,7 +7,6 @@ services:
     ports:
       - "80:80" 
     volumes:
-      - ./app:/var/www/html:ro
       - ./Docker.dev/server.dev.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - frontend
