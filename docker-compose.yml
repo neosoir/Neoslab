@@ -49,6 +49,8 @@ services:
     image: img_neoslab_frontend:1.0
     depends_on:
       - ollama
+    expose:
+      - "3000"
     volumes:
       - ./frontend:/frontend:rw,uid=1000,gid=1000 
     environment:
