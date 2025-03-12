@@ -47,6 +47,10 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        VITE_OLLAMA_API_URL: ${OLLAMA_URL}
+        VITE_OLLAMA_CONTEXT: ${OLLAMA_CONTEXT}
+        VITE_ALLOWED_HOSTS: ${PRIMARY_DOMAIN},ollama.${PRIMARY_DOMAIN}
     container_name: ctr_neoslab_frontend
     image: img_neoslab_frontend:1.0
     depends_on:
