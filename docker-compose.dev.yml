@@ -55,7 +55,7 @@ services:
     environment:
       - VITE_OLLAMA_API_URL=${OLLAMA_URL}
       - VITE_OLLAMA_CONTEXT=${OLLAMA_CONTEXT}
-      - VITE_ALLOWED_HOSTS=${PRIMARY_DOMAIN},192.168.1.84,localhost,ollama.${PRIMARY_DOMAIN}
+      - VITE_ALLOWED_HOSTS=${PRIMARY_DOMAIN},ollama.${PRIMARY_DOMAIN}
     command: >
       /bin/bash -c "
 
