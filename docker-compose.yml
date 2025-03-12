@@ -5,7 +5,8 @@ services:
     restart: always
     container_name: ctr_neoslab_revproxy
     ports:
-      - "80:80" 
+      - "${INTERNAL_PORT}:${EXTERNAL_PORT}"
+      - "${INTERNAL_PORT_SSL}:${EXTERNAL_PORT_SSL}"
     volumes:
       - ./Docker/server.conf:/etc/nginx/templates/server.conf.template
     environment:
