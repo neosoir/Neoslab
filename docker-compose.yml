@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
     environment:
       - OLLAMA_ORIGINS=${APP_URL}
-      - OLLAMA_CONTEXT_LENGTH=8192  
+      - OLLAMA_CONTEXT_LENGTH=${OLLAMA_CONTEXT_LENGTH}
     expose:
       - "11434"
     volumes:
