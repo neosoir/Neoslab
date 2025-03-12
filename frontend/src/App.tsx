@@ -10,12 +10,22 @@ import Footer from './componets/Footer';
 
 import './App.css';
 
+interface Message {
+  role: string;
+  content: string;
+}
+
+interface Model {
+  model: string;
+  name: string;
+}
+
 function App() {
   const [text, setText] = useState('');
-  const [conversation, setConversation] = useState([]);
+  const [conversation, setConversation] = useState<Message[]>([]);
   const apiUrl = import.meta.env.VITE_OLLAMA_API_URL;
   const initialContext = import.meta.env.VITE_OLLAMA_CONTEXT;
-  const [models, setModels] = useState([]);
+  const [models, setModels] = useState<Model[]>([]);
   const [selectedModel, setSelectedModel] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,7 +37,7 @@ function App() {
 
   useEffect(() => {
     if (initialContext) {
-      const initialMessage = { role: "system", content: initialContext };
+      const initialMessage: Message = { role: "system", content: initialContext };
       setConversation([initialMessage]);
     }
   }, [initialContext]);
@@ -39,7 +49,7 @@ function App() {
       return;
     }
 
-    const newMessage = { role: "user", content: text };
+    const newMessage: Message = { role: "user", content: text };
     setConversation((prev) => [...prev, newMessage]);
     setIsLoading(true);
 
@@ -67,14 +77,14 @@ function App() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const reader = response.body.getReader();
+      const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let done = false;
-      let assistantMessage = { role: "assistant", content: "" };
+      let assistantMessage: Message = { role: "assistant", content: "" };
       setConversation((prev) => [...prev, assistantMessage]);
 
       while (!done) {
-        const { value, done: doneReading } = await reader.read();
+        const { value, done: doneReading } = await reader?.read()!;
         done = doneReading;
         const chunk = decoder.decode(value, { stream: true });
 
