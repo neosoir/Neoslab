@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
+const allowedHosts = process.env.VITE_ALLOWED_HOSTS?.split(',') || ['localhost'];
+
+console.log('allowedHosts', allowedHosts);
+
 // https://vite.dev/config/
 export default defineConfig({
   server: {
@@ -10,7 +14,7 @@ export default defineConfig({
     hmr: {
       host: 'localhost',
     },
-    allowedHosts: ['neoslab', '192.168.1.84', 'localhost']
+    allowedHosts
   },
   plugins: [react()],
 })
