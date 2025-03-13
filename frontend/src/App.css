@@ -22,7 +22,9 @@
   }
 }
 
-/* @keyframes pulse {
+/* Sending message */
+
+@keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
   }
@@ -36,7 +38,9 @@
 
 .pulsing {
   animation: pulse 1.5s infinite;
-} */
+}
+
+/* Header */
 
 .header {
   margin: 10px;
@@ -169,6 +173,7 @@
   }
 }
 
+/* Footer */
 .footer {
   .footer__info {
     margin: 10px;
@@ -191,3 +196,4 @@
     }
     border-top: solid 1px white;
   }
+}

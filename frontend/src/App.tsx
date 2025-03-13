@@ -53,6 +53,9 @@ function App() {
     setConversation((prev) => [...prev, newMessage]);
     setIsLoading(true);
 
+
+    console.log('is loading', isLoading);
+
     try {
       const options = import.meta.env.VITE_OLLAMA_USE_OPTIONS === 'true' ? {
         num_predict: 100, // Limita la respuesta a 100 tokens
