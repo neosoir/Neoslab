@@ -37,7 +37,7 @@
 }
 
 .pulsing {
-  animation: pulse 1.5s infinite;
+  animation: pulse 1s infinite;
 }
 
 /* Header */

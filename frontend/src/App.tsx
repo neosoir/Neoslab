@@ -52,9 +52,7 @@ function App() {
     const newMessage: Message = { role: "user", content: text };
     setConversation((prev) => [...prev, newMessage]);
     setIsLoading(true);
-
-
-    console.log('is loading', isLoading);
+    setText('');
 
     try {
       const options = import.meta.env.VITE_OLLAMA_USE_OPTIONS === 'true' ? {
@@ -109,8 +107,6 @@ function App() {
         i === prev.length - 1 ? { ...msg, content: 'Error retrieving response' } : msg
       ));
     }
-
-    setText('');
     setIsLoading(false);
   };
 
@@ -162,6 +158,7 @@ function App() {
           <button 
             onClick={handleSend} 
             className={isLoading ? 'pulsing' : ''}
+            disabled={isLoading ? true : false}
           >
             <FaLocationArrow />
           </button>
