@@ -54,6 +54,14 @@ function App() {
     setIsLoading(true);
 
     try {
+      const options = import.meta.env.VITE_OLLAMA_USE_OPTIONS === 'true' ? {
+        num_predict: 100, // Limita la respuesta a 100 tokens
+        temperature: 0.7, // Controla la creatividad de la respuesta
+        top_p: 0.9, // Equilibra coherencia y diversidad
+        repeat_penalty: 1.1, // Evita repeticiones
+        stop: ["\n"], // Puede detener la generación al final de la oración
+      } : {};
+
       const response = await fetch(`${apiUrl}/api/chat`, {
         method: 'POST',
         headers: {
@@ -63,13 +71,7 @@ function App() {
           model: selectedModel,
           messages: [...conversation, newMessage],
           stream: true,
-          options: {
-            num_predict: 100, // Limita la respuesta a 100 tokens
-            temperature: 0.7, // Controla la creatividad de la respuesta
-            top_p: 0.9, // Equilibra coherencia y diversidad
-            repeat_penalty: 1.1, // Evita repeticiones
-            stop: ["\n"], // Puede detener la generación al final de la oración
-          },
+          options,
         }),
       });
 
