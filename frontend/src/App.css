@@ -146,6 +146,7 @@
             background: var(--Black-Main);
             padding: 10px;
             border-radius: 10px;
+            overflow-x: scroll;
           }
         }
       }
