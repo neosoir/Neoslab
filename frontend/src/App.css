@@ -124,7 +124,7 @@
     justify-content: space-around;
 
     .conversation__messages {
-      margin: 10px;
+      margin: 15px;
       .message {
         .question {
           text-align: right;
@@ -147,6 +147,14 @@
             padding: 10px;
             border-radius: 10px;
             overflow-x: scroll;
+          }
+          .think {
+            color: #8b949e;
+            font-style: italic;
+            margin: 10px 15px;
+            background: var(--Black-Main);
+            padding: 10px;
+            border-radius: 10px;
           }
         }
       }

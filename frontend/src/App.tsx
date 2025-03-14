@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+
 import reactLogo from './assets/react.svg';
 import ollamaLogo from './assets/docker.svg';
 import viteLogo from '/vite.svg';
@@ -37,9 +39,10 @@ function App() {
     stop: ["\n"], // Puede detener la generación al final de la oración
   } : {};
 
-
-  console.log('conversation:', conversation);
-
+  const cleanMessage = (message: string) => {
+    return message.replace(/<think>/g, '<div class="think">').replace(/<\/think>/g, '</div>');
+  };
+  
   useEffect(() => {
     fetch(`${apiUrl}/api/tags`)
       .then(response => response.json())
@@ -152,7 +155,9 @@ function App() {
                     {msg.content === "..." ? (
                       <span className="blinking">...</span>
                     ) : (
-                      <ReactMarkdown>{msg.content}</ReactMarkdown>
+<ReactMarkdown rehypePlugins={[rehypeRaw]}>
+  {cleanMessage(msg.content)}
+</ReactMarkdown>
                     )}
                   </div>
                 )}
