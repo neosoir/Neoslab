@@ -29,6 +29,8 @@ function App() {
   const [selectedModel, setSelectedModel] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  console.log('conversation', conversation)
+
   useEffect(() => {
     fetch(`${apiUrl}/api/tags`)
       .then(response => response.json())
@@ -53,6 +55,9 @@ function App() {
     setConversation((prev) => [...prev, newMessage]);
     setIsLoading(true);
     setText('');
+
+    const assistantMessage: Message = { role: "assistant", content: "..." };
+    setConversation((prev) => [...prev, assistantMessage]);
 
     try {
       const options = import.meta.env.VITE_OLLAMA_USE_OPTIONS === 'true' ? {
@@ -83,8 +88,7 @@ function App() {
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let done = false;
-      let assistantMessage: Message = { role: "assistant", content: "" };
-      setConversation((prev) => [...prev, assistantMessage]);
+      let assistantContent = "";
 
       while (!done) {
         const { value, done: doneReading } = await reader?.read()!;
@@ -95,8 +99,9 @@ function App() {
         jsonChunks.forEach(jsonChunk => {
           const parsedChunk = JSON.parse(jsonChunk);
           if (parsedChunk.message && parsedChunk.message.content) {
+            assistantContent += parsedChunk.message.content;
             setConversation((prev) => prev.map((msg, i) => 
-              i === prev.length - 1 ? { ...msg, content: msg.content + parsedChunk.message.content } : msg
+              i === prev.length - 1 ? { ...msg, content: assistantContent } : msg
             ));
           }
         });
@@ -141,7 +146,7 @@ function App() {
               )}
               {msg.role === "assistant" && (
                 <p className="answer">
-                  <LuBrainCircuit /> {msg.content}
+                  <LuBrainCircuit /> {msg.content === "..." ? <span className="blinking">...</span> : msg.content}
                 </p>
               )}
             </div>
