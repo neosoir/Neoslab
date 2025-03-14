@@ -155,9 +155,9 @@ function App() {
                     {msg.content === "..." ? (
                       <span className="blinking">...</span>
                     ) : (
-<ReactMarkdown rehypePlugins={[rehypeRaw]}>
-  {cleanMessage(msg.content)}
-</ReactMarkdown>
+                      <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                        {cleanMessage(msg.content)}
+                      </ReactMarkdown>
                     )}
                   </div>
                 )}
@@ -171,6 +171,7 @@ function App() {
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder="Haz una pregunta..."
+              disabled={isLoading ? true : false}
             ></textarea>
             <button
               onClick={handleSend}
