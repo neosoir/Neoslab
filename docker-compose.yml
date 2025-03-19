@@ -25,7 +25,7 @@ services:
   # api (this will be the backend)
 
   ollama:
-    image: ollama/ollama:latest
+    image: ollama/ollama:0.6.2
     container_name: ctr_neoslab_ollama
     restart: unless-stopped
     environment:
