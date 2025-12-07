@@ -62,7 +62,7 @@ services:
       /bin/bash -c "
         echo 'Front: verificando package.json...' &&
         if [ ! -f package.json ]; then
-          echo 'No hay package.json en /shop. Manteniendo contenedor vivo...' && tail -f /dev/null;
+          echo 'No hay package.json en /frontend. Manteniendo contenedor vivo...' && tail -f /dev/null;
         else
           echo 'Verificando node_modules...' &&
           if [ ! -d node_modules ]; then
@@ -70,12 +70,8 @@ services:
           else
             echo 'node_modules ya existe. Omitiendo instalación.';
           fi &&
-          echo 'Limpiando build previo (si existe) con el mismo UID/GID heredado...' &&
-          rm -rf build || true &&
-          echo 'Construyendo aplicación (SSR + client)...' &&
-          npm run build &&
-          echo 'Levantando servidor SSR...' &&
-          npm run start
+          echo 'Iniciando Vite en modo desarrollo en 0.0.0.0:5173...' &&
+          npm run dev -- --host 0.0.0.0 --port 5173
         fi
       "
     networks:
