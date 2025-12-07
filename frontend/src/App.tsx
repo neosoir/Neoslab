@@ -39,6 +39,7 @@ function App() {
     stop: ["\n"], // Puede detener la generación al final de la oración
   } : {};
 
+  console.log('context:', initialContext);
   const cleanMessage = (message: string) => {
     return message.replace(/<think>/g, '<div class="think">').replace(/<\/think>/g, '</div>');
   };

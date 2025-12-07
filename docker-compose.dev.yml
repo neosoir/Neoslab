@@ -51,7 +51,7 @@ services:
     expose:
       - "5173"
     volumes:
-      - ./frontend:/frontend:rw,uid=1000,gid=1000 
+      - ./frontend:/frontend:rw,uid=${HOST_UID},gid=${HOST_GID}
     environment:
       - VITE_APP_URL=${APP_URL}
       - VITE_OLLAMA_API_URL=${OLLAMA_URL}
@@ -60,18 +60,24 @@ services:
       - VITE_ALLOWED_HOSTS=${PRIMARY_DOMAIN},ollama.${PRIMARY_DOMAIN}
     command: >
       /bin/bash -c "
-
-      echo 'Verificando si el directorio node_modules existe...' &&
-      if [ ! -d node_modules ]; then
-        echo 'El directorio node_modules no existe. Instalando dependencias de npm...' &&
-        npm install;
-      else
-        echo 'El directorio node_modules ya existe. Saltando instalación de npm.';
-      fi &&
-
-      echo 'Iniciando Vite en modo de desarrollo...' &&
-      npm run dev
-      " 
+        echo 'Front: verificando package.json...' &&
+        if [ ! -f package.json ]; then
+          echo 'No hay package.json en /shop. Manteniendo contenedor vivo...' && tail -f /dev/null;
+        else
+          echo 'Verificando node_modules...' &&
+          if [ ! -d node_modules ]; then
+            echo 'Instalando dependencias...' && npm install;
+          else
+            echo 'node_modules ya existe. Omitiendo instalación.';
+          fi &&
+          echo 'Limpiando build previo (si existe) con el mismo UID/GID heredado...' &&
+          rm -rf build || true &&
+          echo 'Construyendo aplicación (SSR + client)...' &&
+          npm run build &&
+          echo 'Levantando servidor SSR...' &&
+          npm run start
+        fi
+      "
     networks:
       - net_neoslab_dev
       
